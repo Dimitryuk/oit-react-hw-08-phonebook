@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import s from './ContactList.module.css';
+import React from "react";
+import PropTypes from "prop-types";
+import s from "./ContactList.module.css";
 
-const ContactList = ({ contacts, deleteContact }) => {
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <div>
       <ol className={s.contacts__list}>
@@ -12,7 +12,7 @@ const ContactList = ({ contacts, deleteContact }) => {
             <button
               className={s.contacts__button}
               type="button"
-              onClick={()=> deleteContact(id)}
+              onClick={() => onDeleteContact(id)}
             >
               Delete
             </button>
@@ -25,7 +25,7 @@ const ContactList = ({ contacts, deleteContact }) => {
 
 ContactList.propTypes = {
   contacts: PropTypes.array.isRequired,
-  deleteContact: PropTypes.func.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactList;
