@@ -28,4 +28,8 @@ ContactList.propTypes = {
   onDeleteContact: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state)=>({
+  
+})
+
 export default ContactList;

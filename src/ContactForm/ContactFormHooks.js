@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import s from "./ContactForm.module.css";
-const ContactForm = function ({ onSubmit }) {
+import { store } from "../redux/store";
+import { addContact, deleteContact } from "../redux/contacts/actions";
+
+const ContactForm = function ({onSubmitContact} ) {
+ 
+ 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const onChangeHandler = (evt) => {
@@ -12,10 +18,14 @@ const ContactForm = function ({ onSubmit }) {
   const onSubmitHandler = (evt) => {
     evt.preventDefault();
     const data = { name, number };
-    onSubmit(data);
+    onSubmitContact(data)
+    
     setName("");
     setNumber("");
+  
   };
+ 
+  
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
@@ -52,4 +62,14 @@ const ContactForm = function ({ onSubmit }) {
     </div>
   );
 };
-export default ContactForm;
+// const mapStateToProps = (state)=>{
+//   return{
+//     contactList:state.contacts
+//   }
+// }
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    onSubmitContact:(data)=>dispatch(addContact(data))
+  }
+}
+export default connect(null, mapDispatchToProps)(ContactForm)

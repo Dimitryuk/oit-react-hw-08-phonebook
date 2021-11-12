@@ -70,7 +70,7 @@ function App() {
     <>
       <div className="App">
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={handleAddContact} />
+        <ContactForm  />
         <h2>Contacts</h2>
         <Filter onFilterChange={handleFilterChange} />
         <ContactList
