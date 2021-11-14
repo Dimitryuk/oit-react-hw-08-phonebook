@@ -1,9 +1,3 @@
-// import { createStore } from "redux";
-// import { contactsReducer } from "./contacts/reducers";
-// import { composeWithDevTools } from "redux-devtools-extension";
-// export const store = createStore(contactsReducer, composeWithDevTools());
-
-
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import {

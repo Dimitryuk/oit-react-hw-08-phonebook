@@ -1,8 +1,7 @@
-import s from "./Filter.module.css";
-
 import React from "react";
 import { connect } from "react-redux";
 import { changeFilter } from "../redux/contacts/actions";
+import s from "./Filter.module.css";
 
 const Filter = ({ filter, changeFilter }) => {
   return (
@@ -14,7 +13,7 @@ const Filter = ({ filter, changeFilter }) => {
           type="text"
           name="filter"
           value={filter}
-          onChange={changeFilter}
+          onChange={(e) => changeFilter(e.currentTarget.value)}
         />
       </label>
     </div>
