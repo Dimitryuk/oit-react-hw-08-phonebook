@@ -29,17 +29,10 @@
 // };
 
 // const mapStateToProps = (state)=>({
-  
+
 // })
 
 // export default ContactList;
-
-
-
-
-
-
-
 
 // import React from "react";
 // import { connect } from "react-redux";
@@ -95,18 +88,22 @@ import s from "./ContactList.module.css";
 
 const ContactList = ({ contacts, deleteContact }) => {
   return (
-    <>
-      <ul className={s.ContactList}>
-        {contacts &&
-          contacts.map(({ id, name, number }) => (
-            <li key={id}>
-              {name} {number}
-              &ensp;
-           
-            </li>
-          ))}
-      </ul>
-    </>
+    <div>
+      <ol className={s.contacts__list}>
+        {contacts.map(({ name, number, id }) => (
+          <li key={id} className="ContactList_item">
+            {name} {number}
+            <button
+              className={s.contacts__button}
+              type="button"
+              onClick={() => deleteContact(id)}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 };
 
