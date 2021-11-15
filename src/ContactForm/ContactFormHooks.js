@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import shortid from "shortid";
+// import shortid from "shortid";
 import { connect } from "react-redux";
 import { addContact } from "../redux/contacts/actions";
 
@@ -78,6 +78,8 @@ function ContactForm({ phonebookContacts, onSubmit }) {
 
 const mapStateToProps = ({ contacts: { phonebookContacts } }) =>
   phonebookContacts;
+
+
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (name, number) => dispatch(addContact(name, number)),

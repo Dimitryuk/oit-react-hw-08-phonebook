@@ -3,7 +3,14 @@ import { combineReducers } from "redux";
 import { addContact, changeFilter, deleteContact } from "./actions.js";
 
 const phonebookContacts = createReducer([], {
-  [addContact]: (state, { payload }) => [...state, payload],
+  [addContact]: (state, { payload }) => {
+    console.log(payload);
+    if (state.some(({ name }) => name === payload.name)) {
+      alert(`Attention, the contact is already in contacts list`);
+      return state;
+    }
+    return [...state, payload];
+  },
   [deleteContact]: (state, { payload }) =>
     state.filter((contact) => contact.id !== payload),
 });

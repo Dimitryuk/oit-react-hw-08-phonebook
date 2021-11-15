@@ -7,6 +7,7 @@ import { deleteContact } from "../redux/contacts/actions";
 import s from "./ContactList.module.css";
 
 const ContactList = ({ contacts, deleteContact }) => {
+ 
   return (
     <div>
       <ol className={s.contacts__list}>
