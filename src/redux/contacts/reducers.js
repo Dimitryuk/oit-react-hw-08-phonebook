@@ -1,9 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { addContact, changeFilter, deleteContact } from "./actions.js";
+import { addContactSuccess, changeFilter, deleteContact } from "./actions.js";
 
 const phonebookContacts = createReducer([], {
-  [addContact]: (state, { payload }) => {
+  [addContactSuccess]: (state, { payload }) => {
     console.log(payload);
     if (state.some(({ name }) => name === payload.name)) {
       alert(`Attention, the contact is already in contacts list`);

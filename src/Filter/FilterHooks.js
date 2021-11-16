@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { changeFilter } from "../redux/contacts/actions";
+import { changeFilter }  from "../redux/contacts/actions";
 import s from "./Filter.module.css";
 
 const Filter = ({ filter, changeFilter }) => {

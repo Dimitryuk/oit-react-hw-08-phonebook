@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 // import shortid from "shortid";
 import { connect } from "react-redux";
-import { addContact } from "../redux/contacts/actions";
+import { addContact } from "../redux/contacts/contacts-operations";
 
 import s from "./ContactForm.module.css";
-
+console.log(addContact);
 function ContactForm({ phonebookContacts, onSubmit }) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  console.log(addContact("dfsafdf", 5455454));
 
   // const nameInputId = shortid.generate();
   // const numberInputId = shortid.generate();
