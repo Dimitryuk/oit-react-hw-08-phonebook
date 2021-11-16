@@ -2,12 +2,13 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import { deleteContact } from "../redux/contacts/actions";
+import { useEffect } from "react";
+import { deleteContact,fetchContacts } from "../redux/contacts/contacts-operations";
 
 import s from "./ContactList.module.css";
 
-const ContactList = ({ contacts, deleteContact }) => {
- 
+const ContactList = ({ contacts, deleteContact, fetchContactsAll }) => {
+ useEffect(()=>{fetchContactsAll()},[])
   return (
     <div>
       <ol className={s.contacts__list}>
@@ -42,6 +43,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteContact: (id) => dispatch(deleteContact(id)),
+  fetchContactsAll:()=>dispatch(fetchContacts())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
