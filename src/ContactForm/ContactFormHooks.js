@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { addContact } from "../redux/contacts/contacts-operations";
+import {getContacts} from '../redux/selectors'
 
 import s from "./ContactForm.module.css";
 console.log(addContact);
 function ContactForm({ phonebookContacts, onSubmit }) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  console.log(addContact("dfsafdf", 5455454));
+  const dispatch = useDispatch()
+
+  const contacts = useSelector(getContacts)
+  
 
  
 
@@ -32,8 +36,16 @@ function ContactForm({ phonebookContacts, onSubmit }) {
   //onSubmitForm
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    onSubmit(name, number);
+ const cont = {
+      name: name,
+      phone: number,
+    };
+     if (contacts.some(({ name }) => name === cont.name)) {
+      return alert(`Attention, the contact is already in contacts list`);
+    }
+    // dispatch(addContact(cont))
+    dispatch(addContact({name, number}))
+    
 
     setName("");
     setNumber("");
@@ -76,8 +88,8 @@ function ContactForm({ phonebookContacts, onSubmit }) {
   );
 }
 
-const mapStateToProps = ({ contacts: { phonebookContacts } }) =>
-  phonebookContacts;
+// const mapStateToProps = ({ contacts: { phonebookContacts } }) =>
+//   phonebookContacts;
 
 
 
@@ -85,4 +97,4 @@ const mapDispatchToProps = (dispatch) => ({
   onSubmit: (name, number) => dispatch(addContact(name, number)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+export default connect(null, mapDispatchToProps)(ContactForm);

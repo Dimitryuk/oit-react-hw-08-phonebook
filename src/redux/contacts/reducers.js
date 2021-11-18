@@ -1,9 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import {
-  addContactRequest,
-  addContactSuccess,
-  addContactError,
+  // addContactRequest,
+  // addContactSuccess,
+  // addContactError,
   changeFilter,
   // fetchContactRequest,
   // fetchContactSuccess,
@@ -13,16 +13,16 @@ import {
   // deleteContactSuccess,
   // deleteContactError
 } from "./actions.js";
-import {fetchContacts ,deleteContact } from './contacts-operations'
+import {fetchContacts ,deleteContact, addContact } from './contacts-operations'
 
 const phonebookContacts = createReducer([], {
   [fetchContacts.fulfilled]:(_, {payload})=>payload ,
-  [addContactSuccess]: (state, { payload }) => {
+  [addContact.fulfilled]: (state, { payload }) => {
     console.log(payload);
-    if (state.some(({ name }) => name === payload.name)) {
-      alert(`Attention, the contact is already in contacts list`);
-      return state;
-    }
+    // if (state.some(({ name }) => name === payload.name)) {
+    //   alert(`Attention, the contact is already in contacts list`);
+    //   return state;
+    // }
     return [...state, payload];
   },
   [deleteContact.fulfilled]: (state, { payload }) =>
@@ -35,9 +35,9 @@ export const loading = createReducer(false, {
   [fetchContacts.pending]: () => true,
   [fetchContacts.fulfilled]: () => false,
   [fetchContacts.rejected]: () => false,
-  [addContactRequest]: () => true,
-  [addContactSuccess]: () => false,
-  [addContactError]: () => false,
+  [addContact.pending]: () => true,
+  [addContact.fulfilled]: () => false,
+  [addContact.rejected]: () => false,
   [deleteContact.pending]: () => true,
   [deleteContact.fulfilled]: () => false,
   [deleteContact.rejected]: () => false,

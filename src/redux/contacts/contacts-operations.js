@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-    addContactRequest, addContactSuccess, addContactError,
+    // addContactRequest, addContactSuccess, addContactError,
     // deleteContactRequest, deleteContactSuccess, deleteContactError,
     // fetchContactRequest, fetchContactSuccess, fetchContactError
 }
@@ -27,13 +27,21 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-export const addContact = (name, number) => dispatch => {
-  const contact = { name, number }
-  dispatch(addContactRequest())
-    axios.post("/contacts", contact)
-        .then(({ data }) => dispatch(addContactSuccess(data)))
-    .catch(error => dispatch(addContactError(error)))
-}
+// export const addContact = (name, number) => dispatch => {
+//   const contact = { name, number }
+//   dispatch(addContactRequest())
+//     axios.post("/contacts", contact)
+//         .then(({ data }) => dispatch(addContactSuccess(data)))
+//     .catch(error => dispatch(addContactError(error)))
+// }
+
+export const addContact = createAsyncThunk(
+  "contacts/сontactsGlobal",
+  async (cont) => {
+    const contacts = await addContactAPI(cont);
+    return contacts;
+  }
+);
 
 // export const deleteContact = id => dispatch => {
 //     dispatch(deleteContactRequest())
