@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import shortid from "shortid";
+
 import { connect } from "react-redux";
 import { addContact } from "../redux/contacts/contacts-operations";
 
@@ -10,8 +10,7 @@ function ContactForm({ phonebookContacts, onSubmit }) {
   const [number, setNumber] = useState("");
   console.log(addContact("dfsafdf", 5455454));
 
-  // const nameInputId = shortid.generate();
-  // const numberInputId = shortid.generate();
+ 
 
   //onChangeInput
   const handleChange = (e) => {

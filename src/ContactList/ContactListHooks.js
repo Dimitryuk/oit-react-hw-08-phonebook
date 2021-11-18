@@ -7,7 +7,7 @@ import { deleteContact,fetchContacts } from "../redux/contacts/contacts-operatio
 
 import s from "./ContactList.module.css";
 
-const ContactList = ({ contacts, deleteContact, fetchContactsAll }) => {
+const ContactList = ({ contacts, deleteContact, fetchContactsAll, isLoading }) => {
  useEffect(()=>{fetchContactsAll()},[])
   return (
     <div>
@@ -22,6 +22,7 @@ const ContactList = ({ contacts, deleteContact, fetchContactsAll }) => {
             >
               Delete
             </button>
+          
           </li>
         ))}
       </ol>
@@ -36,9 +37,11 @@ const getVisibleContacts = (allContacts, filter) => {
   );
 };
 const mapStateToProps = ({
+  
   contacts: { phonebookContacts, phonebookFilter },
 }) => ({
   contacts: getVisibleContacts(phonebookContacts, phonebookFilter),
+ 
 });
 
 const mapDispatchToProps = (dispatch) => ({
