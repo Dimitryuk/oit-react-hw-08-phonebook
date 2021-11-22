@@ -14,21 +14,44 @@ const styles = {
   },
 };
 
-const Navigation = () => (
-  <nav>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
-      Главная
-    </NavLink>
+// const Navigation = () => (
+//   <nav>
+//     <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
+//       Главная
+//     </NavLink>
 
-    <NavLink
-      to="/todos"
-      exact
-      style={styles.link}
-      activeStyle={styles.activeLink}
-    >
-      Заметки
-    </NavLink>
-  </nav>
-);
+//     <NavLink
+//       to="/todos"
+//       exact
+//       style={styles.link}
+//       activeStyle={styles.activeLink}
+//     >
+//       Заметки
+//     </NavLink>
+//   </nav>
+// );
+
+function Navigation() {
+    // const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
+
+    return (
+        <nav >
+            <NavLink to="/" exact >
+                Home
+            </NavLink>
+
+            {/* {isLoggedIn && (
+                <NavLink
+                    to="/contacts"
+                    exact
+                    className={s.link}
+                    activeClassName={s.activeLink}
+                >
+                    Contacts
+                </NavLink>
+            )} */}
+        </nav>
+    );
+}
 
 export default Navigation;

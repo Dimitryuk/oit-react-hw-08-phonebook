@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 import ContactForm from '../ContactForm/ContactFormHooks.js';
 import ContactList from '../ContactList/ContactListHooks';
 import Filter from '../Filter/FilterHooks';
-import Notification from '../Notification';
+import Notification from '../Notification/Notification';
 import Section from '../Section/Section.js';
 
 // import contactsOperations from '../../redux/contacts/contacts-operations';
 // import contactsSelectors from '../../redux/contacts/contacts-selectors';
 
 const Contacts = ({ filter, items, dispatch, loading }) => {
-  //   useEffect(() => dispatch(contactsOperations.fetchContacts()), []);
+    // useEffect(() => dispatch(contactsOperations.fetchContacts()), []);
 
   const cleanFilter = filter.toLowerCase();
   const filteredContacts = items
