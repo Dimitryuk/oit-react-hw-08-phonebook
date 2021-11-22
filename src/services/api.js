@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from 'axios';
 
-axios.defaults.baseURL = "https://61923b18aeab5c0017105e79.mockapi.io";
+axios.defaults.baseURL = 'https://61923b18aeab5c0017105e79.mockapi.io';
 
 export async function fetchContactsAPI() {
-  const { data } = await axios.get("/contacts");
+  const { data } = await axios.get('/contacts');
   return data;
 }
 
-export async function addContactAPI(o) {
-  const { data } = await axios.post("/contacts", o);
+export async function addContactAPI(contact) {
+  const { data } = await axios.post('/contacts', contact);
   return data;
 }
 export async function deleteContactsAPI(id) {

@@ -24,7 +24,7 @@ export default function UserMenu() {
   return (
     <div style={styles.container}>
       <img src={avatar} alt="" width="32" style={styles.avatar} />
-      // eslint-disable-next-line no-restricted-globals
+      {/* // eslint-disable-next-line no-restricted-globals */}
       <span style={styles.name}>Добро пожаловать, </span>
       <button
         type="button" /*onClick={() => dispatch(authOperations.logOut())}*/
