@@ -8,8 +8,7 @@ import {
     from './actions'
 import {fetchContactsAPI, addContactAPI,deleteContactsAPI} from '../../services/api'
 
-axios.defaults.baseURL =
-    "https://6192861ad3ae6d0017da8170.mockapi.io/api/v1/"
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 // export const fetchContacts = () => dispatch => {
 //     dispatch(fetchContactRequest())
