@@ -2,7 +2,7 @@
 // import ReactDOM from 'react-dom';
 // import './index.css';
 // import App from './AppHooks';
-// import { store } from './redux/store'
+
 // import {Provider} from 'react-redux'
 
 
@@ -26,17 +26,21 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./AppHooks";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import { store, persistor } from './redux/store'
 import { BrowserRouter } from 'react-router-dom'
+import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <Provider store={store}>
+    
+      <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+        <BrowserRouter>
       <App />
-      
+       </BrowserRouter>
+      </PersistGate>
     </Provider>
-    </BrowserRouter>
+   
   </React.StrictMode>,
   document.getElementById("root")
 );

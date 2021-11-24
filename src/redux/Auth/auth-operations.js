@@ -13,10 +13,19 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 //     }
 // })
 
-const register = createAsyncThunk("auth/register", async (userReg) => {
-  console.log(userReg);
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
+
+const register = createAsyncThunk("auth/register", async (userData) => {
+  
   try {
-    const { data } = await axios.post("users/signup", userReg);
+    const { data } = await axios.post("users/signup", userData);
  
     return data;
   } catch (error) {
@@ -24,11 +33,29 @@ const register = createAsyncThunk("auth/register", async (userReg) => {
   }
 });
 
+const logIn = createAsyncThunk("auth/login", async (userData) => {
+  try {
+    const { data } = await axios.post("users/login", userData);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+const logOut = createAsyncThunk("auth/logout", async () => {
+  try {
+    await axios.post("/users/logout");
+    token.unset();
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const operations = {
   register,
-//   logOut,
-//   logIn,
+  logOut,
+  logIn,
 //   fetchCurrentUser,
 };
 export default operations;
