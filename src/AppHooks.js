@@ -6,6 +6,7 @@ import LoginView from './views/LoginView';
 import RegisterView from './views/RegisterView';
 import ContactList from './ContactList/ContactListHooks';
 import Container from './Container/Container';
+import ContactsView from './views/ContactsView';
 
 import Filter from './Filter/FilterHooks';
 import { Suspense } from 'react';
@@ -19,7 +20,7 @@ function App() {
         <Route exact path="/" component={HomeView} />
         <Route path="/register" component={RegisterView} />
         <Route path="/login" component={LoginView} />
-        <Route path="/contacts" component={ContactList} />
+        <Route path="/contacts" component={ContactsView} />
       </Switch>
     </Container>
   );

@@ -33,14 +33,6 @@ export default function AuthNav() {
       >
         Логин
       </NavLink>
-      <NavLink
-        to="/contacts"
-        exact
-        style={styles.link}
-        activeStyle={styles.activeLink}
-      >
-        Контакты
-      </NavLink>
     </div>
   );
 }
