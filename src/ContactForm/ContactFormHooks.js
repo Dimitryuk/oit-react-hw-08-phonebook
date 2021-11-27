@@ -1,31 +1,33 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { connect, useDispatch, useSelector } from "react-redux";
-import { addContact } from "../redux/contacts/contacts-operations";
-import {getContacts} from '../redux/selectors'
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../redux/contacts/contacts-operations';
+import { getContacts } from '../redux/selectors';
 
-import s from "./ContactForm.module.css";
+import s from './ContactForm.module.css';
+import {
+  BsTelephonePlusFill,
+  BsFillPersonPlusFill,
+  BsFillFileEarmarkPersonFill,
+} from 'react-icons/bs';
 console.log(addContact);
 function ContactForm({ phonebookContacts, onSubmit }) {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const dispatch = useDispatch()
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
-  const contacts = useSelector(getContacts)
-  
-
- 
+  const contacts = useSelector(getContacts);
 
   //onChangeInput
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
 
     switch (name) {
-      case "name":
+      case 'name':
         setName(value);
         break;
 
-      case "number":
+      case 'number':
         setNumber(value);
         break;
 
@@ -34,27 +36,27 @@ function ContactForm({ phonebookContacts, onSubmit }) {
     }
   };
   //onSubmitForm
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
- const cont = {
+    const cont = {
       name: name,
       phone: number,
     };
-     if (contacts.some(({ name }) => name === cont.name)) {
+    if (contacts.some(({ name }) => name === cont.name)) {
       return alert(`Attention, the contact is already in contacts list`);
     }
     // dispatch(addContact(cont))
-    dispatch(addContact({name, number}))
-    
+    dispatch(addContact({ name, number }));
 
-    setName("");
-    setNumber("");
+    setName('');
+    setNumber('');
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label>
+          <BsFillFileEarmarkPersonFill style={{ marginRight: '10px' }} />
           Name
           <input
             className={s.input__field}
@@ -68,6 +70,7 @@ function ContactForm({ phonebookContacts, onSubmit }) {
           />
         </label>
         <label>
+          <BsTelephonePlusFill style={{ marginRight: '10px' }} />
           Number
           <input
             className={s.input__field}
@@ -81,6 +84,7 @@ function ContactForm({ phonebookContacts, onSubmit }) {
           />
         </label>
         <button className={s.form__button} type="submit">
+          <BsFillPersonPlusFill style={{ marginRight: '10px' }} />
           Add contact
         </button>
       </form>
@@ -91,9 +95,7 @@ function ContactForm({ phonebookContacts, onSubmit }) {
 // const mapStateToProps = ({ contacts: { phonebookContacts } }) =>
 //   phonebookContacts;
 
-
-
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onSubmit: (name, number) => dispatch(addContact(name, number)),
 });
 

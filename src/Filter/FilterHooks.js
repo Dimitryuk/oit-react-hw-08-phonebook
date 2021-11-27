@@ -1,11 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import { changeFilter }  from "../redux/contacts/actions";
-import s from "./Filter.module.css";
+import React from 'react';
+import { connect } from 'react-redux';
+import { changeFilter } from '../redux/contacts/actions';
+import s from './Filter.module.css';
+import { BsSearch } from 'react-icons/bs';
 
 const Filter = ({ filter, changeFilter }) => {
   return (
     <div className="FilterWrapper">
+      <BsSearch style={{ marginRight: '10px' }} />
       Find contact by name
       <label htmlFor="">
         <input
@@ -13,7 +15,7 @@ const Filter = ({ filter, changeFilter }) => {
           type="text"
           name="filter"
           value={filter}
-          onChange={(e) => changeFilter(e.currentTarget.value)}
+          onChange={e => changeFilter(e.currentTarget.value)}
         />
       </label>
     </div>
@@ -22,8 +24,8 @@ const Filter = ({ filter, changeFilter }) => {
 
 const mapStateToProps = ({ contacts: { filter } }) => ({ filter: filter });
 
-const mapDispatchToProps = (dispatch) => ({
-  changeFilter: (value) => dispatch(changeFilter(value)),
+const mapDispatchToProps = dispatch => ({
+  changeFilter: value => dispatch(changeFilter(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

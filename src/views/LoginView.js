@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/Auth';
+import { BsFillKeyFill } from 'react-icons/bs';
 
 const styles = {
   form: {
@@ -61,7 +62,10 @@ export default function LoginView() {
           />
         </label>
 
-        <button type="submit">Войти</button>
+        <button type="submit">
+          <BsFillKeyFill />
+          Войти
+        </button>
       </form>
     </div>
   );
