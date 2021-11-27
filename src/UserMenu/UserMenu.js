@@ -18,17 +18,15 @@ const styles = {
 
 export default function UserMenu() {
   const dispatch = useDispatch();
-    const name = useSelector(authSelectors.getUsername);
+  const name = useSelector(authSelectors.getUsername);
   const avatar = defaultAvatar;
 
   return (
     <div style={styles.container}>
       <img src={avatar} alt="" width="32" style={styles.avatar} />
       {/* // eslint-disable-next-line no-restricted-globals */}
-      <span style={styles.name}>Добро пожаловать,{ name} </span>
-      <button
-        type="button" onClick={() => dispatch(authOperations.logOut())}
-      >
+      <span style={styles.name}>Добро пожаловать, {name} </span>
+      <button type="button" onClick={() => dispatch(authOperations.logOut())}>
         Выйти
       </button>
     </div>
